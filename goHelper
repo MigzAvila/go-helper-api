@@ -1,0 +1,39 @@
+#!/bin/bash
+
+
+DEBUG_ON=true
+DEBUG_OFF=false
+DEFAULT_DEBUG_MODE=$DEBUG_ON
+
+
+function debug_message() {
+  local message=$1
+  local is_error_type=$2
+
+  echo "AKI ------ $is_error_type"
+
+
+  if $mssg_type
+  then 
+      echo -e "[ERROR]\n $message"
+  else
+      echo -e "[DEBUG]\n $message"
+  fi
+
+}
+
+
+function make-go-dir() {
+  local top_level_directory=$1
+  local identifier=$2
+  local debugging_enabled=${3:-$DEFAULT_DEBUG_MODE}
+
+  if [ -z "$top_level_directory" ] || [ -z "$identifier" ]
+  then
+      debug_message "You need to provide two arguments for this script to work.\nUsage: make-go-dir <root directory name> <identifier name>" true
+  else
+      debug_message "$top_level_directory ----  identifier"
+  fi
+
+
+}
