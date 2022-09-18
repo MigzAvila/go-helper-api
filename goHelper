@@ -10,22 +10,33 @@ function debugger() {
   then 
       echo -e "[ERROR]\n$message"
   else
-      echo -e "[DEBUG]\n$message"
+      echo -e "$message"
   fi
 
 }
 
 
-function make-go-dir() {
-  local top_level_directory=$1
+function create_go_api_structure() {
+  local root_directory==$1
   local identifier=$2
-  local debugging_enabled=${3:-$DEFAULT_DEBUG_MODE}
+ 
+  debugger "I am about to create a directory structure named *karpbox*.\nDo you want me to continue? [Yes/no]" 
+  read user_authorization
 
-  if [ -z "$top_level_directory" ] || [ -z "$identifier" ]
+  debugger "user input: ---- $user_authorization ----"
+
+}
+
+
+function make-go-dir() {
+  local root_directory=$1
+  local identifier=$2
+ 
+  if [ -z "$root_directory" ] || [ -z "$identifier" ]
   then
       debugger "You need to provide two arguments for this script to work.\nUsage: make-go-dir <root directory name> <identifier name>" true
   else
-      debugger "$top_level_directory ----  $identifier" 
+     create_go_api_structure root_directory identifier 
   fi
 
 
