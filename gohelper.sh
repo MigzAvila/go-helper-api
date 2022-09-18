@@ -3,7 +3,7 @@
 SIMPLE_GO_CODE="// File: cmd/api/main.go\n package main \nimport \"fmt\" \nfunc main() { \nfmt.Println(\"Starting Server....\")\n}"
 
 function debugger() {
-  # Simple dubugger functio to avoid writing mutiple echo in the project
+  # Simple dubugger function to avoid writing mutiple echo in the project
   # debugger gets two params,
   # 1 -> the actual msg to be display,
   # 2 -> if the msg is an error or msg to ask/notify the user about something important
