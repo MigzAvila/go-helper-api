@@ -4,7 +4,7 @@ SIMPLE_GO_CODE="// File: cmd/api/main.go\n package main \nimport \"fmt\" \nfunc 
 
 
 function debugger() {
-  #Simple dubugger functio to avoid writing mutiple echo in the project
+  # Simple dubugger functio to avoid writing mutiple echo in the project
   # debugger gets two params, 
   # 1 -> the actual msg to be display, 
   # 2 -> if the msg is an error or msg to ask/notify the user about something important
@@ -24,7 +24,7 @@ function debugger() {
 
 
 function create_directory_with_go_code(){
-   #Function that will create a go api structure
+   # Function that will create a go api structure
    local root_directory=$1
    local identifier=$2
 
@@ -40,7 +40,7 @@ function create_directory_with_go_code(){
 
 
 function create_go_api_structure() {
-  #function that will verify that the user want to create the go api structure
+  # Function that will verify that the user want to create the go api structure
   local root_directory=$1
   local identifier=$2
   
@@ -61,9 +61,9 @@ function create_go_api_structure() {
 
 
 function make-go-dir() {
-  #Main function that will call subfunction/utility function to do all the work
-  #Save Variable pass by the use in the console
-  #Require two variables
+  # Main function that will call subfunction/utility function to do all the work
+  # Save Variable pass by the use in the console
+  # Require two variables
   local root_directory=$1
   local identifier=$2
 
