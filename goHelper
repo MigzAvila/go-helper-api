@@ -1,12 +1,7 @@
 #!/bin/bash
 
 
-DEBUG_ON=true
-DEBUG_OFF=false
-DEFAULT_DEBUG_MODE=$DEBUG_ON
-
-
-function debug_message() {
+function debugger() {
   local message=$1
   local is_error_type=${2:-false}
 
@@ -28,9 +23,9 @@ function make-go-dir() {
 
   if [ -z "$top_level_directory" ] || [ -z "$identifier" ]
   then
-      debug_message "You need to provide two arguments for this script to work.\nUsage: make-go-dir <root directory name> <identifier name>" true
+      debugger "You need to provide two arguments for this script to work.\nUsage: make-go-dir <root directory name> <identifier name>" true
   else
-      debug_message "$top_level_directory ----  $identifier" 
+      debugger "$top_level_directory ----  $identifier" 
   fi
 
 
