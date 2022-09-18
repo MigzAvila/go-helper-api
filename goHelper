@@ -17,13 +17,20 @@ function debugger() {
 
 
 function create_go_api_structure() {
-  local root_directory==$1
+  local root_directory=$1
   local identifier=$2
- 
-  debugger "I am about to create a directory structure named *karpbox*.\nDo you want me to continue? [Yes/no]" 
+  
+  echo $root_directory
+
+  debugger "I am about to create a directory structure named *$root_directory*.\nDo you want me to continue? [Yes/no]" 
   read user_authorization
 
-  debugger "user input: ---- $user_authorization ----"
+  if [ $user_authorization = "Yes" ]
+  then 
+     debugger "Create directory structure..."
+  else
+    debugger "Abort"
+  fi
 
 }
 
@@ -31,12 +38,12 @@ function create_go_api_structure() {
 function make-go-dir() {
   local root_directory=$1
   local identifier=$2
- 
+
   if [ -z "$root_directory" ] || [ -z "$identifier" ]
   then
       debugger "You need to provide two arguments for this script to work.\nUsage: make-go-dir <root directory name> <identifier name>" true
   else
-     create_go_api_structure root_directory identifier 
+     create_go_api_structure $root_directory $identifier 
   fi
 
 
