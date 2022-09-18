@@ -22,11 +22,13 @@ function create_directory_with_go_code(){
    local identifier=$2
 
    cd 
+   mkdir -p $root_directory
    cd $root_directory
+   
+   go mod init $root_directory.$identifier
    mkdir -p bin cmd/api internals migrations remote
    echo -e $SIMPLE_GO_CODE > cmd/api/main.go
-   touch Makefile 
-
+   touch Makefile
 }
 
 
