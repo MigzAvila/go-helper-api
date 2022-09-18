@@ -1,5 +1,6 @@
 #!/bin/bash
 
+SIMPLE_GO_CODE="// File: cmd/api/main.go\n package main \nimport \"fmt\" \nfunc main() { \nfmt.Println(\"Starting Server....\")\n}"
 
 function debugger() {
   local message=$1
@@ -8,10 +9,23 @@ function debugger() {
 
   if [ "$is_error_type" = true ]
   then 
-      echo -e "[ERROR]\n$message"
+      echo -e "\033[0;31m[ERROR]\n$message"
   else
-      echo -e "$message"
+      echo -e "\033[0;34m$message test"
   fi
+
+}
+
+
+function create_directory_with_go_code(){
+   local root_directory=$1
+   local identifier=$2
+
+   cd 
+   cd $root_directory
+   mkdir -p bin cmd/api internals migrations remote
+   echo -e $SIMPLE_GO_CODE > cmd/api/main.go
+   touch Makefile 
 
 }
 
@@ -28,8 +42,9 @@ function create_go_api_structure() {
   if [ $user_authorization = "Yes" ]
   then 
      debugger "Create directory structure..."
+     create_directory_with_go_code $root_directory $identifier
   else
-    debugger "Abort"
+    debugger "Abort" true
   fi
 
 }
