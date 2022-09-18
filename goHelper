@@ -8,16 +8,14 @@ DEFAULT_DEBUG_MODE=$DEBUG_ON
 
 function debug_message() {
   local message=$1
-  local is_error_type=$2
-
-  echo "AKI ------ $is_error_type"
+  local is_error_type=${2:-false}
 
 
-  if $mssg_type
+  if [ "$is_error_type" = true ]
   then 
-      echo -e "[ERROR]\n $message"
+      echo -e "[ERROR]\n$message"
   else
-      echo -e "[DEBUG]\n $message"
+      echo -e "[DEBUG]\n$message"
   fi
 
 }
@@ -32,7 +30,7 @@ function make-go-dir() {
   then
       debug_message "You need to provide two arguments for this script to work.\nUsage: make-go-dir <root directory name> <identifier name>" true
   else
-      debug_message "$top_level_directory ----  identifier"
+      debug_message "$top_level_directory ----  $identifier" 
   fi
 
 
